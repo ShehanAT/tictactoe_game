@@ -6,34 +6,38 @@
         var computerToken = 'O';
         $('#finish').hide();
         $('#board').hide();
+        
     function isGameOver(){
         var counter = 0;
         for (var i = 0 ; i <= 6; i = i + 3){
             if (grid[i] !== 'E' && grid[i] == grid[i + 1] && grid[i + 1] ===grid[i + 2]){
-                console.log('1');
+                
                 return true;
             }
         }
         
         for (var i = 0 ; i <= 2; i++){
             if (grid[i] !== 'E' && grid[i] == grid[i + 3] && grid[i + 3] == grid[i + 6]){
-                console.log(grid);
+                
                 return true;
             }
         }
         for (var i = 0, j = 4; i <= 2; j-= 2, i+=2){
             if (grid[i] !== 'E' && grid[i] === grid[i + j] && grid[i + j] == grid[i + 2*j]){
-                console.log('3');
+            
                 return true;
             }
         }
+        
         for (var i = 0 ; i < 9; i++){
             if($('#'+i).hasClass('occupied')){
                 counter++;
+                
             }
-        }
-        if (counter == 8){
             
+        }
+        
+        if (counter == 9){
             return 'draw';
         }
         return false;
@@ -41,7 +45,7 @@
     function moveAI(){
         
         for (var i =0 ; i < 9; i++){
-            if ($("#"+i).text() == ''){
+            if (!$("#"+i).hasClass('occupied')){
                 return $('#'+i);
             }
         }
@@ -113,7 +117,6 @@
             $("#"+event.target.id).html(turnObject.turn).css('color', turnObject.color);
             
             grid[event.target.id] = turnObject.turn;
-            console.log(isGameOver());
             if (isGameOver() == 'draw'){
                 changeScreen('draw');
             }
@@ -144,7 +147,6 @@
     });
     $('.boxes').on('mouseover', (event) => {
 		if(!event.target.className.includes('box-filled')) {
-            console.log(turnObject.turn.toLowerCase());
 			event.target.style.backgroundImage = 'url("img/' + (turnObject.turn).toLowerCase() + '.svg")';
 		}
 	});

@@ -142,6 +142,18 @@
     $('.newgame').click(function(){
         location.reload();
     });
-    
+    $('.boxes').on('mouseover', (event) => {
+		if(!event.target.className.includes('box-filled')) {
+            console.log(turnObject.turn.toLowerCase());
+			event.target.style.backgroundImage = 'url("img/' + (turnObject.turn).toLowerCase() + '.svg")';
+		}
+	});
+	
+	// Make the letter disappear when the player mouses out, if the box is not filled
+	$('.boxes').on('mouseout', (event) => {
+		if(!event.target.className.includes('box-filled')) { 
+			event.target.style.backgroundImage = '';
+		}
+	});
     }); 
 })()

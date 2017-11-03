@@ -107,13 +107,14 @@
         $('.start-button-human').addClass("checked");
     });
     $('.box').click(function(event){
-        if ($("#"+event.target.id).hasClass('occupied') == false && !$(".start-button-human").hasClass('checked')){
+        if ($("#"+event.target.id).hasClass('occupied') == false && !$(".start-button-human").hasClass('checked')){//human vs computer
             $(this).text(token).css('color','green');
             $("#"+event.target.id).addClass('occupied');
             grid[event.target.id] = 'X';
             advance();
         }
-        if ($(".start-button-human").hasClass('checked') && !$('#'+event.target.id).hasClass('occupied')){
+        if ($(".start-button-human").hasClass('checked') && !$('#'+event.target.id).hasClass('occupied')){//human vs human
+            
             $("#"+event.target.id).html(turnObject.turn).css('color', turnObject.color);
             
             grid[event.target.id] = turnObject.turn;
@@ -138,6 +139,9 @@
                 turnObject.background = 'red';
             }
             $("#"+event.target.id).addClass('occupied');
+            if (grid.indexOf('E') == -1){
+                changeScreen('draw');
+            }
         }
         
     });

@@ -71,14 +71,14 @@ h1 {
     .screen-win-one .button {
       color: #3688C3; }
     .screen-win-one p:before {
-      content: "o";
+      content:'o';
       top: 1.75rem; }
   .screen-win-two {
     background: #3688C3; }
     .screen-win-two .button {
       color: #FFA000; }
     .screen-win-two p:before {
-      content: "×";
+      content:'x';
       top: 4.5rem; }
 
 .board {
@@ -139,5 +139,16 @@ h1 {
     .boxes .box-filled-2 {
       background-color: #3688C3;
       background-image: url(../img/x.svg); }
+.row{
+  text-align: center;
+}
+.col-1{
+  float:left;
+  width: 50%;
+}
+.col-2{
+  float:right;
+  width: 50%;
+}
 
 

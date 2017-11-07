@@ -170,11 +170,6 @@
             $("#"+event.target.id).addClass('occupied');
             }
             
-            //else{
-                
-            //}
-            
-            
             
         });
     

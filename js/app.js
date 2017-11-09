@@ -1,17 +1,17 @@
-//checkforwin, move ai , change screens
-(function(){
+
+(function(){//module pattern
     $(document).ready(function(){
         var token = 'x';
         const grid = ['E','E','E','E','E','E','E','E','E'];//main grid that the program uses to find the current status of the game
         var computerToken = 'o';
-        $('#finish').hide();
+        $('#finish').hide();//hiding finish and board screen on program start
         $('#board').hide();
         
     function isGameOver(){//function that checks if the game is in a winning condition for either player and returns the name of the player that won 
-        if ($(".start-button-human").hasClass('checked')){
+        if ($(".start-button-human").hasClass('checked')){//fixes a bug that conflicted with the human vs human and human vs computer game modes
             var counter = 0;
         }
-        else if (!$(".start-button-human").hasClass('checked')){
+        else if (!$(".start-button-human").hasClass('checked')){//fixes a bug that conflicted with the human vs human and human vs computer game modes
             var counter = -1;
         }
         for (var i = 0 ; i <= 6; i = i + 3){//checks the rows
@@ -35,7 +35,7 @@
         }
         
         for (var i = 0 ; i < 9; i++){
-            if($('#'+i).hasClass('occupied')){
+            if($('#'+i).hasClass('occupied')){//mark every occupied square with the class occupied and increases flag variable by 1
                 counter++;    
             }
         }
@@ -54,14 +54,14 @@
     }
     function changeScreen(whoWon){//function that changes the screen from board screen to the appropriate winning screen depending on which player won 
         
-        if (whoWon == 'xwon'){
+        if (whoWon == 'xwon'){//checks for win
             $('#board').hide();
             $('#finish').addClass('screen-win-two').removeClass('screen-win-tie screen-win-one');
             $('header h1').text($(".col-2").text().replace(/['"]+/g, ''))
             $('#finish').show();
             
         }
-        if (whoWon == 'owon'){
+        if (whoWon == 'owon'){//checks for win
             $('#board').hide();
             $('header h1').text($(".col-1").text().replace(/['"]+/g, ''))//'<p>'+$(".col-1").text().replace(/['"]+/g, '')+'</p>')
             //$('#finish').css('background-image','url(mockups/tictactoe-03-winner1.png)');
@@ -183,7 +183,7 @@
 		}
 	});
 	
-	// Make the letter disappear when the player mouses out, if the box is not filled
+	// Makes the letter disappear when the player mouses out, if the box is not filled
 	$('.boxes').on('mouseout', (event) => {
 		if(!event.target.className.includes('box-filled')) { 
 			event.target.style.backgroundImage = '';
